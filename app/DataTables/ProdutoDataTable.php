@@ -18,7 +18,10 @@ class ProdutoDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'produtos.datatables_actions');
+        return $dataTable
+            ->addColumn('foto', 'produtos.partials.foto_datatable')
+            ->addColumn('action', 'produtos.datatables_actions')
+            ->rawColumns(['foto', 'action']);
     }
 
     /**
@@ -65,23 +68,13 @@ class ProdutoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'titulo',
-            'subtitulo',
-            'preco',
-            'ean',
-            'disponivel',
-            'descricao',
-            'descricao_sem_acento',
-            'marca',
-            'ncm',
             'foto',
-            'st',
-            'cfop',
-            'icms_trib',
-            'icms_cst',
-            'pis_cst',
-            'cofins_cst',
-            'cest'
+            'titulo',
+            'marca',
+            'preco',
+            'disponivel',
+            'ean',
+            'subtitulo',
         ];
     }
 

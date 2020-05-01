@@ -18,7 +18,7 @@
                          <div class="card-body">
                              @include('produtos.table')
                               <div class="pull-right mr-3">
-                                     
+
                               </div>
                          </div>
                      </div>
