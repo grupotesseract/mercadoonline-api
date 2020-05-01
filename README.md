@@ -1,4 +1,4 @@
-<h1 align="center">Laravel API Boilerplate</h1>
+<h1 align="center">Mercado Online API</h1>
 
 <p align="center">
   Criado com muito ☕ por <a href="https://grupotesseract.com.br">Grupo Tesseract</a><br>
@@ -28,8 +28,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 ## Instalação
 
 ``` sh
-git clone https://github.com/grupotesseract/api-boilerplate
-cd api-boilerplate
+git clone https://github.com/grupotesseract/mercadoonline-api
+cd mercadoonline-api 
 ```
 
 É altamente recomendada a criação do alias abaixo. Inclua no seu arquivo `~/.zshrc` ou `~/.bashrc`:
