@@ -26,3 +26,5 @@ Route::get('/estados/{id}/cidades', 'CidadeController@getPorEstado');
 
 
 Route::resource('produtos', 'ProdutoController');
+
+Route::resource('pedidos', 'PedidoController');

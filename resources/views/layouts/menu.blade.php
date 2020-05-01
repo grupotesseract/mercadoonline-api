@@ -10,3 +10,9 @@
         <span>Produtos</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('pedidos*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('pedidos.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Pedidos</span>
+    </a>
+</li>
