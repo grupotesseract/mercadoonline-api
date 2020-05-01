@@ -34,7 +34,7 @@
     },
     {
         "name": "preco",
-        "dbType": "decimal,12,5",
+        "dbType": "decimal,6,2",
         "htmlType": "text",
         "validations": "required",
         "searchable": true,
@@ -196,17 +196,6 @@
         "primary": false,
         "inForm": true,
         "inIndex": true
-    },
-    {
-        "name": "deleted_at",
-        "dbType": "datetime",
-        "htmlType": "date",
-        "validations": "",
-        "searchable": false,
-        "fillable": false,
-        "primary": false,
-        "inForm": false,
-        "inIndex": false
     },
     {
         "name": "created_at",
