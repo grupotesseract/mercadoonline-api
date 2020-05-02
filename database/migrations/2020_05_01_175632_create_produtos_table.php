@@ -31,7 +31,7 @@ class CreateProdutosTable extends Migration
             $table->smallInteger('icms_cst')->nullable();
             $table->smallInteger('pis_cst')->nullable();
             $table->smallInteger('cofins_cst')->nullable();
-            $table->smallInteger('cest')->nullable();
+            $table->bigInteger('cest')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
