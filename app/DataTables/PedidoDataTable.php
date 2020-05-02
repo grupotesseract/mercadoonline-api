@@ -29,7 +29,7 @@ class PedidoDataTable extends DataTable
      */
     public function query(Pedido $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->orderBy('created_at', 'desc');
     }
 
     /**

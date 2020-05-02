@@ -72,6 +72,7 @@ class ProdutoPedidoDataTable extends DataTable
         return [
             'foto',
             'titulo' => ['data' => 'produto.titulo'],
+            'preco' => ['data' => 'produto.preco'],
             'quantidade',
             'confirmado'
         ];
