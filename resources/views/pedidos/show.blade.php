@@ -14,11 +14,23 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Details</strong>
-                                  <a href="{{ route('pedidos.index') }}" class="btn btn-light">Back</a>
+                                 <strong>Detalhes do Pedido #{{$pedido->id}}</strong>
+                                  <a href="{{ route('pedidos.index') }}" class="btn btn-light">Voltar</a>
                              </div>
                              <div class="card-body">
                                  @include('pedidos.show_fields')
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-lg-12">
+                         <div class="card">
+                             <div class="card-header">
+                                 <strong>Produtos do pedido</strong>
+                             </div>
+                             <div class="card-body">
+                                 <p> <strong>Total: R$ {{$pedido->total}}</strong> </p>
+                                 <hr>
+                                 @include('produtos.table')
                              </div>
                          </div>
                      </div>

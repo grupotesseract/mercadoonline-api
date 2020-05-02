@@ -20,7 +20,7 @@ class Pedido extends Model
     use SoftDeletes;
 
     public $table = 'pedidos';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -50,14 +50,38 @@ class Pedido extends Model
      * @var array
      */
     public static $rules = [
-        'nome_cliente' => 'required'
     ];
+
+    public $appends = [
+        'total',
+        'dataFormatada'
+    ];
+
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      **/
     public function produtos()
     {
-        return $this->belongsToMany(\App\Models\Produto::class, 'produtos_pedido', 'produto_id', 'pedido_id');
+        return $this->belongsToMany(\App\Models\Produto::class, 'produtos_pedido')
+            ->withPivot('quantidade');
     }
+
+    /**
+     * Acessor para o total do pedido
+     */
+     public function getTotalAttribute()
+     {
+        return $this->produtos()->sum('preco');
+     }
+
+    /**
+     * Acessor para o created_at formatado
+     */
+     public function getDataFormatadaAttribute()
+     {
+        return $this->created_at->format('d/m/Y');
+     }
+
 }

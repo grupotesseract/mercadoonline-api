@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\PedidoDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\DataTables\PedidoDataTable;
+use App\DataTables\ProdutoDataTable;
+use App\Repositories\PedidoRepository;
+use App\DataTables\Scopes\PorIdPedido;
 use App\Http\Requests\CreatePedidoRequest;
 use App\Http\Requests\UpdatePedidoRequest;
-use App\Repositories\PedidoRepository;
-use Flash;
 use App\Http\Controllers\AppBaseController;
-use Response;
 
 class PedidoController extends AppBaseController
 {
@@ -53,6 +55,7 @@ class PedidoController extends AppBaseController
     {
         $input = $request->all();
 
+
         $pedido = $this->pedidoRepository->create($input);
 
         Flash::success('Pedido saved successfully.');
@@ -67,7 +70,7 @@ class PedidoController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show(ProdutoDataTable $datatable, $id)
     {
         $pedido = $this->pedidoRepository->find($id);
 
@@ -77,7 +80,8 @@ class PedidoController extends AppBaseController
             return redirect(route('pedidos.index'));
         }
 
-        return view('pedidos.show')->with('pedido', $pedido);
+        return $datatable->addScope(new PorIdPedido($pedido->id))
+            ->render('pedidos.show', compact('pedido'));
     }
 
     /**

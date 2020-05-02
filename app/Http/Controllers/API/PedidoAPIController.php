@@ -54,8 +54,8 @@ class PedidoAPIController extends AppBaseController
     public function store(CreatePedidoAPIRequest $request)
     {
         $input = $request->all();
-
         $pedido = $this->pedidoRepository->create($input);
+        $pedido->produtos()->sync($request->produtos);
 
         return $this->sendResponse($pedido->toArray(), 'Pedido saved successfully');
     }

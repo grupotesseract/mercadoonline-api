@@ -12,7 +12,7 @@
 </li>
 <li class="nav-item {{ Request::is('pedidos*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('pedidos.index') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="fas fa-baby-carriage"></i>
         <span>Pedidos</span>
     </a>
 </li>
