@@ -34,7 +34,7 @@ class Produto extends Model
     use SoftDeletes;
 
     public $table = 'produtos';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -117,4 +117,14 @@ class Produto extends Model
     {
         return $this->belongsTo(\App\Models\Cidade::class, 'cidade_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function pedidos()
+    {
+        return $this->belongsToMany(\App\Models\Pedido::class, 'produtos_pedido');
+    }
+
+
 }
