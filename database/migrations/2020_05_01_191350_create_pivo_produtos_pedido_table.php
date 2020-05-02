@@ -23,6 +23,7 @@ class CreatePivoProdutosPedidoTable extends Migration
             $table->foreign('pedido_id')->references('id')->on('pedidos');
 
             $table->integer('quantidade')->default(1);
+            $table->boolean('confirmado')->default(0);
 
             $table->timestamps();
         });

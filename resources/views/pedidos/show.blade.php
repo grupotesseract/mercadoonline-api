@@ -10,6 +10,7 @@
      <div class="container-fluid">
           <div class="animated fadeIn">
                  @include('coreui-templates::common.errors')
+                 @include('flash::message')
                  <div class="row">
                      <div class="col-lg-12">
                          <div class="card">
@@ -28,7 +29,18 @@
                                  <strong>Produtos do pedido</strong>
                              </div>
                              <div class="card-body">
-                                 <p> <strong>Total: R$ {{$pedido->total}}</strong> </p>
+                                 <div class="row">
+                                 <div class="col-lg-6">
+                                     <p><strong>Mensagem confirmação</strong></p>
+                                     {{Form::textarea('mensagem_confirmacao', $pedido->mensagemConfirmacao)}}
+                                 </div>
+                                 <div class="col-lg-6">
+                                     <p><strong>Mensagem itens faltando</strong></p>
+                                     {{Form::textarea('mensagem_faltando', $pedido->mensagemFaltando)}}
+                                 </div>
+                                 </div>
+                                 <hr>
+                                 <p class=""> <strong>Total: R$ {{$pedido->total}}</strong> </p>
                                  <hr>
                                  @include('produtos.table')
                              </div>

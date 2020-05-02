@@ -35,7 +35,8 @@ class ProdutosPedido extends Model
     public $fillable = [
         'produto_id',
         'pedido_id',
-        'quantidade'
+        'quantidade',
+        'confirmado'
     ];
 
     /**
@@ -47,7 +48,8 @@ class ProdutosPedido extends Model
         'id' => 'integer',
         'produto_id' => 'integer',
         'pedido_id' => 'integer',
-        'quantidade' => 'integer'
+        'quantidade' => 'integer',
+        'confirmado' => 'integer'
     ];
 
     /**

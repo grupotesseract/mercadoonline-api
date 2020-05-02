@@ -20,7 +20,7 @@ class ProdutoPedidoDataTable extends DataTable
 
         return $dataTable
             ->addColumn('foto', 'produtos.partials.foto_datatable')
-            ->addColumn('action', 'produtos.datatables_actions')
+            ->addColumn('action', 'produtos.partials.confirmacao_pedido_datatable')
             ->rawColumns(['foto', 'action']);
     }
 
@@ -72,7 +72,8 @@ class ProdutoPedidoDataTable extends DataTable
         return [
             'foto',
             'titulo' => ['data' => 'produto.titulo'],
-            'quantidade'
+            'quantidade',
+            'confirmado'
         ];
     }
 

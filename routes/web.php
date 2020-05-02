@@ -24,7 +24,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('/estados/{id}/cidades', 'CidadeController@getPorEstado');
 
-
 Route::resource('produtos', 'ProdutoController');
-
 Route::resource('pedidos', 'PedidoController');
+Route::resource('produtos_pedido', 'ProdutosPedidoController');
