@@ -6,7 +6,7 @@ use Flash;
 use Response;
 use App\Http\Requests;
 use App\DataTables\PedidoDataTable;
-use App\DataTables\ProdutoDataTable;
+use App\DataTables\ProdutoPedidoDataTable;
 use App\Repositories\PedidoRepository;
 use App\DataTables\Scopes\PorIdPedido;
 use App\Http\Requests\CreatePedidoRequest;
@@ -70,7 +70,7 @@ class PedidoController extends AppBaseController
      *
      * @return Response
      */
-    public function show(ProdutoDataTable $datatable, $id)
+    public function show(ProdutoPedidoDataTable $datatable, $id)
     {
         $pedido = $this->pedidoRepository->find($id);
 

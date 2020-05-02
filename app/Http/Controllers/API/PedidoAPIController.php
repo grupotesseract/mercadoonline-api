@@ -57,7 +57,7 @@ class PedidoAPIController extends AppBaseController
         $pedido = $this->pedidoRepository->create($input);
         $pedido->produtos()->sync($request->produtos);
 
-        return $this->sendResponse($pedido->toArray(), 'Pedido saved successfully');
+        return $this->sendResponse($pedido->toArray(), 'Pedido criado com sucesso');
     }
 
     /**

@@ -25,9 +25,6 @@ class PorIdPedido implements DataTableScope
      */
     public function apply($query)
     {
-        $idPedido = $this->idPedido;
-        return $query->whereHas('pedidos', function($queryPedidos) use ($idPedido) {
-            $queryPedidos->where('pedido_id', $idPedido);
-        });
+        return $query->where('pedido_id', $this->idPedido);
     }
 }
