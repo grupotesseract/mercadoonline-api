@@ -34,3 +34,7 @@
     </div>
 @endsection
 
+
+@section('scripts')
+
+@endsection
