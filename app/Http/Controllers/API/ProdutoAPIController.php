@@ -38,7 +38,7 @@ class ProdutoAPIController extends AppBaseController
             $request->except(['skip', 'limit']),
             $request->get('skip'),
             $request->get('limit')
-        );
+        )->where('disponivel', true);
 
         return $this->sendResponse($produtos->toArray(), 'Produtos retrieved successfully');
     }
