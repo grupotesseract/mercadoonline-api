@@ -7,14 +7,19 @@
     <div class="container-fluid">
         <div class="animated fadeIn">
              @include('flash::message')
+             @include('coreui-templates::common.errors')
              <div class="row">
                  <div class="col-lg-12">
                      <div class="card">
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
                              Produtos
-                             <a class="btn btn-info btn-xs" href="{{route('importar-produtos')}}">Importar produtos</a>
-                             <a class="pull-right" href="{{ route('produtos.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
+
+                             <div class="pull-right">
+
+                                 <a title="Adicionar Produto" class="mr-3" href="{{ route('produtos.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
+                                 <a title="Importar Produtos"  href="{{route('importar-produtos')}}"><i class="fa fa-upload fa-lg"></i></a>
+                             </div>
                          </div>
                          <div class="card-body">
                              @include('produtos.table')

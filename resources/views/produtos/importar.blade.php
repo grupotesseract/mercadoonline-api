@@ -30,8 +30,8 @@
                                     {{ Form::file('planilha') }}
 
                                     <div class="w-100 mt-3">
-                                    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                                    <a href="{{ route('produtos.index') }}" class="btn btn-secondary">Cancel</a>
+                                    {!! Form::submit('Importar', ['class' => 'btn btn-primary']) !!}
+                                    <a href="{{ route('produtos.index') }}" class="btn btn-secondary">Voltar</a>
                                     </div>
 
 

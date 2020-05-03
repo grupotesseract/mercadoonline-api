@@ -32,3 +32,5 @@ Route::resource('produtos_pedido', 'ProdutosPedidoController');
 Route::get('importar-produtos', 'ProdutoController@getImportarProdutos')->name('importar-produtos');
 Route::post('importar-produtos', 'ProdutoController@postImportarProdutos')->name('produtos.importar');
 Route::get('exemplo-importacao', 'ProdutoController@downloadExemploImportacao')->name('exemplo-importacao');
+
+Route::patch('produtos/{id}/disponibilidade', 'ProdutoController@postDisponibilidade')->name('produtos.disponibilidade');

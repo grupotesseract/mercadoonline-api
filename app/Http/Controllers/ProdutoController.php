@@ -112,6 +112,8 @@ class ProdutoController extends AppBaseController
     {
         $produto = $this->produtoRepository->find($id);
 
+        dd($request->all());
+
         if (empty($produto)) {
             Flash::error('Produto not found');
 
@@ -191,6 +193,20 @@ class ProdutoController extends AppBaseController
     }
 
 
+    public function postDisponibilidade($id)
+    {
+        $produto = $this->produtoRepository->find($id);
 
+        if (empty($produto)) {
+            Flash::error('Produto not found');
+            return redirect(route('produtos.index'));
+        }
+
+        $produto = $this->produtoRepository->update(\Request::all(), $id);
+
+        Flash::success('Produto atualizado com sucesso.');
+
+        return redirect(route('produtos.index'));
+    }
 
 }
