@@ -148,4 +148,49 @@ class ProdutoController extends AppBaseController
 
         return redirect(route('produtos.index'));
     }
+
+    /**
+     * Metodo para servir a view de importaco de planilha
+     *
+     * @return void
+     */
+    public function getImportarProdutos()
+    {
+        return view('produtos.importar');
+    }
+
+    /**
+     * Metodo para fazer o download da planilha de importação.
+     *
+     * @return void
+     */
+    public function downloadExemploImportacao()
+    {
+        $path = public_path('exemplo-importacao.ods');
+        return Response::download($path);
+    }
+
+
+    /**
+     * Metodo para fazer a importacao de uma planilha de produtos
+     *
+     * @return void
+     */
+    public function postImportarProdutos()
+    {
+        $planilha = \Request::all()['planilha'];
+        $path = \Storage::put("importacoes", $planilha);
+
+        \Artisan::call('import:produtos', [
+            'fileToPath' => $path
+        ]);
+
+        Flash::success('Produtos importados com sucesso.');
+
+        return redirect(route('produtos.index'));
+    }
+
+
+
+
 }
