@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ProdutoDataTable;
+use App\DataTables\Scopes\PorDisponibilidade;
 use App\Http\Requests;
 use App\Http\Requests\CreateProdutoRequest;
 use App\Http\Requests\UpdateProdutoRequest;
@@ -111,8 +112,6 @@ class ProdutoController extends AppBaseController
     public function update($id, UpdateProdutoRequest $request)
     {
         $produto = $this->produtoRepository->find($id);
-
-        dd($request->all());
 
         if (empty($produto)) {
             Flash::error('Produto not found');

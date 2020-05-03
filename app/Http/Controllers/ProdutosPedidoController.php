@@ -120,9 +120,13 @@ class ProdutosPedidoController extends AppBaseController
 
         $produtosPedido = $this->produtosPedidoRepository->update(\Request::all(), $id);
 
-        Flash::success('Pedido atualizado.');
+        $retorno = [
+            'mensagemFaltando' => $produtosPedido->pedido->mensagemFaltando,
+            'mensagemConfirmacao' => $produtosPedido->pedido->mensagemConfirmacao,
+            'total' => $produtosPedido->pedido->total
+        ];
 
-        return redirect(route('pedidos.show', $produtosPedido->pedido_id));
+        return $retorno;
     }
 
     /**
@@ -148,4 +152,22 @@ class ProdutosPedidoController extends AppBaseController
 
         return redirect(route('produtosPedidos.index'));
     }
+
+
+    public function postConfirmacao($id)
+    {
+        $produtosPedido = $this->produtosPedidoRepository->find($id);
+
+        if (empty($produtosPedido)) {
+            Flash::error('Produtos Pedido not found');
+            return redirect(route('produtosPedidos.index'));
+        }
+
+        $produtosPedido = $this->produtosPedidoRepository->update(\Request::all(), $id);
+
+        Flash::success('Pedido atualizado.');
+
+        return redirect(route('pedidos.show', $produtosPedido->pedido_id));
+    }
+
 }

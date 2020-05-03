@@ -1,6 +1,6 @@
 @if ($confirmado)
 
-{!! Form::open(['route' => ['produtos_pedido.update', $id], 'method' => 'patch']) !!}
+    {!! Form::open(['route' => ['produtos_pedido.update', $id], 'method' => 'patch' , 'class' => 'confirmacao']) !!}
 <div class='btn-group'>
     {!!  Form::hidden('confirmado', 0) !!}
     {!! Form::button('<i class="fa fa-remove"></i>', [
@@ -13,7 +13,7 @@
 
 @else
 
-{!! Form::open(['route' => ['produtos_pedido.update', $id], 'method' => 'patch']) !!}
+{!! Form::open(['route' => ['produtos_pedido.update', $id], 'method' => 'patch' , 'class' => 'confirmacao']) !!}
 <div class='btn-group'>
     {!!  Form::hidden('confirmado', true) !!}
     {!! Form::button('<i class="fa fa-check"></i>', [
