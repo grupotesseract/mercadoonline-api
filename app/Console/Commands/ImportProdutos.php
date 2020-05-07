@@ -41,6 +41,5 @@ class ImportProdutos extends Command
     {
         $fileToPath = $this->argument('fileToPath');
         Excel::import(new ProdutosImport, $fileToPath);
-        dump('Planilha importada com sucesso');
     }
 }

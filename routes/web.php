@@ -27,3 +27,10 @@ Route::get('/estados/{id}/cidades', 'CidadeController@getPorEstado');
 Route::resource('produtos', 'ProdutoController');
 Route::resource('pedidos', 'PedidoController');
 Route::resource('produtos_pedido', 'ProdutosPedidoController');
+
+//Importação de produtos
+Route::get('importar-produtos', 'ProdutoController@getImportarProdutos')->name('importar-produtos');
+Route::post('importar-produtos', 'ProdutoController@postImportarProdutos')->name('produtos.importar');
+Route::get('exemplo-importacao', 'ProdutoController@downloadExemploImportacao')->name('exemplo-importacao');
+
+Route::patch('produtos/{id}/disponibilidade', 'ProdutoController@postDisponibilidade')->name('produtos.disponibilidade');
