@@ -23,4 +23,4 @@ Route::resource('pedidos', 'PedidoAPIController');
 
 
 
-Route::resource('configuracoes', 'ConfiguracaoAPIController');
+Route::resource('informacoes', 'ConfiguracaoAPIController');

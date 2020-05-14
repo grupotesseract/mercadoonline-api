@@ -34,12 +34,7 @@ class ConfiguracaoAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $configuracoes = $this->configuracaoRepository->all(
-            $request->except(['skip', 'limit']),
-            $request->get('skip'),
-            $request->get('limit')
-        );
-
+        $configuracoes = $this->configuracaoRepository->all()->first();
         return $this->sendResponse($configuracoes->toArray(), 'Configuracoes retrieved successfully');
     }
 

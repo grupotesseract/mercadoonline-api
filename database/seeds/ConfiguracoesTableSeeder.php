@@ -11,6 +11,6 @@ class ConfiguracoesTableSeeder extends Seeder
      */
     public function run()
     {
-
+        factory(\App\Models\Configuracao::class)->create();
     }
 }
