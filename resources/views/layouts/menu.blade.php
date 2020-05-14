@@ -16,3 +16,9 @@
         <span>Pedidos</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('configuracoes*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('configuracoes.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Configuracoes</span>
+    </a>
+</li>

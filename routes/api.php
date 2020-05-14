@@ -21,3 +21,6 @@ Route::post('/login', 'UsuarioAPIController@login');
 Route::resource('produtos', 'ProdutoAPIController');
 Route::resource('pedidos', 'PedidoAPIController');
 
+
+
+Route::resource('configuracoes', 'ConfiguracaoAPIController');
