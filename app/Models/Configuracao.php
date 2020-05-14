@@ -26,7 +26,7 @@ class Configuracao extends Model
     use SoftDeletes;
 
     public $table = 'configuracoes';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -68,7 +68,7 @@ class Configuracao extends Model
      * @var array
      */
     public static $rules = [
-        'nome_loja' => 'required'
+        'numero_whatsapp' => 'required|numeric'
     ];
 
     /**

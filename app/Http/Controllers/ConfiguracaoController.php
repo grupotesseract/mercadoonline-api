@@ -120,9 +120,9 @@ class ConfiguracaoController extends AppBaseController
 
         $configuracao = $this->configuracaoRepository->update($request->all(), $id);
 
-        Flash::success('Configuracao updated successfully.');
+        Flash::success('Configurações atualizadas com sucesso');
 
-        return redirect(route('configuracoes.index'));
+        return redirect(route('configuracoes.edit', 1));
     }
 
     /**

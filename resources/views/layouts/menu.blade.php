@@ -17,8 +17,8 @@
     </a>
 </li>
 <li class="nav-item {{ Request::is('configuracoes*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('configuracoes.index') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>Configuracoes</span>
+    <a class="nav-link" href="{{ route('configuracoes.edit', 1) }}">
+        <i class="fa fa-cogs"></i>
+        <span>Configurações</span>
     </a>
 </li>

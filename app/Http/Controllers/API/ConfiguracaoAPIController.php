@@ -35,7 +35,7 @@ class ConfiguracaoAPIController extends AppBaseController
     public function index(Request $request)
     {
         $configuracoes = $this->configuracaoRepository->all()->first();
-        return $this->sendResponse($configuracoes->toArray(), 'Configuracoes retrieved successfully');
+        return $this->sendResponse($configuracoes->toArray(), 'Configurações obtidas com sucesso');
     }
 
     /**
@@ -97,7 +97,7 @@ class ConfiguracaoAPIController extends AppBaseController
 
         $configuracao = $this->configuracaoRepository->update($input, $id);
 
-        return $this->sendResponse($configuracao->toArray(), 'Configuracao updated successfully');
+        return $this->sendResponse($configuracao->toArray(), 'Configurações atualizadas com sucesso');
     }
 
     /**
