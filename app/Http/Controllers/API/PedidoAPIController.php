@@ -34,13 +34,9 @@ class PedidoAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $pedidos = $this->pedidoRepository->all(
-            $request->except(['skip', 'limit']),
-            $request->get('skip'),
-            $request->get('limit')
-        );
+        $pedidos = $this->pedidoRepository->all();
 
-        return $this->sendResponse($pedidos->toArray(), 'Pedidos retrieved successfully');
+        return $this->sendResponse($pedidos, 'Pedidos retrieved successfully');
     }
 
     /**
