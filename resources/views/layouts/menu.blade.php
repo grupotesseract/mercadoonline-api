@@ -22,3 +22,9 @@
         <span>Configurações</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('banners*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('banners.index') }}">
+        <i class="fa fa-ad"></i>
+        <span>Banners</span>
+    </a>
+</li>
