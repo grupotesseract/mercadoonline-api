@@ -24,3 +24,6 @@ Route::resource('pedidos', 'PedidoAPIController');
 
 
 Route::resource('informacoes', 'ConfiguracaoAPIController');
+
+
+Route::resource('banners', 'BannerAPIController');

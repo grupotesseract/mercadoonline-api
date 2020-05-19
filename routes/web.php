@@ -37,3 +37,5 @@ Route::patch('produtos/{id}/disponibilidade', 'ProdutoController@postDisponibili
 
 
 Route::resource('configuracoes', 'ConfiguracaoController');
+
+Route::resource('banners', 'BannerController');
