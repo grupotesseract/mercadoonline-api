@@ -4,37 +4,15 @@
 <div class="form-group col-sm-12">
     {!! Form::label('foto', 'Foto:') !!} <br>
 
-    <video id="player" controls autoplay style="max-width:100%; display:none" video></video>
-
-    <div>
-        {!! Form::text('foto', null, ['class' => 'w-75']) !!}
-        <button id="capture" class="btn-primary"><i class="fa fa-camera"></i></button>
+    <div class="w-75 pull-left">
+        {!! Form::text('foto', null, ['class' => 'form-control', 'title' => 'Inserir link', 'placeholder' => 'Link para a foto do produto', 'id' => 'link-foto']) !!}
     </div>
 
-    <script>
-        var player = document.getElementById('player');
-        var captureButton = document.getElementById('capture');
-        var videoTracks;
-
-        var handleSuccess = function(stream) {
-            // Attach the video stream to the video element and autoplay.
-            player.srcObject = stream;
-            videoTracks = stream.getVideoTracks();
-        };
-
-        captureButton.addEventListener('click', function() {
-            var context = snapshot.getContext('2d');
-            context.drawImage(player, 0, 0, snapshotCanvas.width, snapshotCanvas.height);
-
-            // Stop all video streams.
-            videoTracks.forEach(function(track) {track.stop()});
-        });
-
-        navigator.mediaDevices.getUserMedia({video: true})
-        .then(handleSuccess);
-    </script>
-
-    {!! Form::hidden('foto', null, ['class' => 'form-control']) !!}
+    <div class="w-25 pull-right">
+        <a class="btn btn-small btn-primary text-light" data-toggle="modal" data-target="#modalUploadFoto">
+            <i class="fa fa-camera"></i>
+        </a>
+    </div>
 </div>
 
 
@@ -145,3 +123,4 @@
     <a href="{{ route('produtos.index') }}" class="btn btn-secondary">Cancel</a>
 </div>
 
+@include('produtos.partials.modal_foto')
