@@ -34,13 +34,9 @@ class ProdutoAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $produtos = $this->produtoRepository->all(
-            $request->except(['skip', 'limit']),
-            $request->get('skip'),
-            $request->get('limit')
-        );
+        $produtos = $this->produtoRepository->findByField('disponivel', true)->all();
 
-        return $this->sendResponse($produtos->toArray(), 'Produtos retrieved successfully');
+        return $this->sendResponse($produtos, 'Produtos retrieved successfully');
     }
 
     /**

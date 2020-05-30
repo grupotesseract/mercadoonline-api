@@ -34,7 +34,7 @@ class Produto extends Model
     use SoftDeletes;
 
     public $table = 'produtos';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -94,20 +94,7 @@ class Produto extends Model
     public static $rules = [
         'titulo' => 'required',
         'preco' => 'required',
-        'ean' => 'required',
         'disponivel' => 'required',
-        'descricao' => 'required',
-        'descricao_sem_acento' => 'required',
-        'marca' => 'required',
-        'ncm' => 'required',
-        'foto' => 'required',
-        'st' => 'required',
-        'cfop' => 'required',
-        'icms_trib' => 'required',
-        'icms_cst' => 'required',
-        'pis_cst' => 'required',
-        'cofins_cst' => 'required',
-        'cest' => 'required'
     ];
 
     /**
@@ -117,4 +104,22 @@ class Produto extends Model
     {
         return $this->belongsTo(\App\Models\Cidade::class, 'cidade_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function pedidos()
+    {
+        return $this->belongsToMany(\App\Models\Pedido::class, 'produtos_pedido');
+    }
+
+    /**
+     * Acessor para
+     */
+     public function getFotoAttribute($value)
+     {
+        return $value ? $value : "https://via.placeholder.com/180";
+     }
+
+
 }

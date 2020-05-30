@@ -18,6 +18,12 @@ Route::middleware(['auth:api'])->group(function () {
 */
 
 Route::post('/login', 'UsuarioAPIController@login');
-
-
 Route::resource('produtos', 'ProdutoAPIController');
+Route::resource('pedidos', 'PedidoAPIController');
+
+
+
+Route::resource('informacoes', 'ConfiguracaoAPIController');
+
+
+Route::resource('banners', 'BannerAPIController');

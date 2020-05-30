@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ProdutoDataTable;
+use App\DataTables\Scopes\PorDisponibilidade;
 use App\Http\Requests;
 use App\Http\Requests\CreateProdutoRequest;
 use App\Http\Requests\UpdateProdutoRequest;
@@ -53,9 +54,14 @@ class ProdutoController extends AppBaseController
     {
         $input = $request->all();
 
-        $produto = $this->produtoRepository->create($input);
-
         Flash::success('Produto saved successfully.');
+
+        $nomeArquivo = microtime();
+        $retorno = \Cloudder::upload($request->foto, $nomeArquivo);
+
+        $input['foto'] = $retorno->getResult(){"secure_url"};
+
+        $produto = $this->produtoRepository->create($input);
 
         return redirect(route('produtos.index'));
     }
@@ -111,6 +117,7 @@ class ProdutoController extends AppBaseController
     public function update($id, UpdateProdutoRequest $request)
     {
         $produto = $this->produtoRepository->find($id);
+        $input = $request->all();
 
         if (empty($produto)) {
             Flash::error('Produto not found');
@@ -118,7 +125,11 @@ class ProdutoController extends AppBaseController
             return redirect(route('produtos.index'));
         }
 
-        $produto = $this->produtoRepository->update($request->all(), $id);
+        $nomeArquivo = microtime();
+        $retorno = \Cloudder::upload($request->foto, $nomeArquivo);
+
+        $input['foto'] = $retorno->getResult(){"secure_url"};
+        $produto = $this->produtoRepository->update($input, $id);
 
         Flash::success('Produto updated successfully.');
 
@@ -148,4 +159,63 @@ class ProdutoController extends AppBaseController
 
         return redirect(route('produtos.index'));
     }
+
+    /**
+     * Metodo para servir a view de importaco de planilha
+     *
+     * @return void
+     */
+    public function getImportarProdutos()
+    {
+        return view('produtos.importar');
+    }
+
+    /**
+     * Metodo para fazer o download da planilha de importação.
+     *
+     * @return void
+     */
+    public function downloadExemploImportacao()
+    {
+        $path = public_path('exemplo-importacao.ods');
+        return Response::download($path);
+    }
+
+
+    /**
+     * Metodo para fazer a importacao de uma planilha de produtos
+     *
+     * @return void
+     */
+    public function postImportarProdutos()
+    {
+        $planilha = \Request::all()['planilha'];
+        $path = \Storage::put("importacoes", $planilha);
+
+        \Artisan::call('import:produtos', [
+            'fileToPath' => $path
+        ]);
+
+        Flash::success('Produtos importados com sucesso.');
+
+        return redirect(route('produtos.index'));
+    }
+
+
+    public function postDisponibilidade($id)
+    {
+        $produto = $this->produtoRepository->find($id);
+
+        if (empty($produto)) {
+            Flash::error('Produto not found');
+            return redirect(route('produtos.index'));
+        }
+
+        $produto = $this->produtoRepository->update(\Request::all(), $id);
+
+        Flash::success('Produto atualizado com sucesso.');
+
+        return redirect(route('produtos.index'));
+    }
+
 }
