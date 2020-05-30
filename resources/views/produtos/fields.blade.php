@@ -1,5 +1,21 @@
 <div class="row">
 <div class="col-sm-6">
+
+<div class="form-group col-sm-12">
+    {!! Form::label('foto', 'Foto:') !!} <br>
+
+    <div class="w-75 pull-left">
+        {!! Form::text('foto', null, ['class' => 'form-control', 'title' => 'Inserir link', 'placeholder' => 'Link para a foto do produto', 'id' => 'link-foto']) !!}
+    </div>
+
+    <div class="w-25 pull-right">
+        <a id="btn-modal-foto" class="btn btn-small btn-primary text-light" data-toggle="modal" data-target="#modalUploadFoto">
+            <i class="fa fa-camera"></i>
+        </a>
+    </div>
+</div>
+
+
 <!-- Titulo Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('titulo', 'Titulo:') !!}
@@ -25,10 +41,6 @@
 </div>
 
 <!-- Foto Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('foto', 'Foto:') !!}
-    {!! Form::text('foto', null, ['class' => 'form-control']) !!}
-</div>
 
 
 <!-- Disponivel Field -->
@@ -111,3 +123,4 @@
     <a href="{{ route('produtos.index') }}" class="btn btn-secondary">Cancel</a>
 </div>
 
+@include('produtos.partials.modal_foto')

@@ -54,9 +54,14 @@ class ProdutoController extends AppBaseController
     {
         $input = $request->all();
 
-        $produto = $this->produtoRepository->create($input);
-
         Flash::success('Produto saved successfully.');
+
+        $nomeArquivo = microtime();
+        $retorno = \Cloudder::upload($request->foto, $nomeArquivo);
+
+        $input['foto'] = $retorno->getResult(){"secure_url"};
+
+        $produto = $this->produtoRepository->create($input);
 
         return redirect(route('produtos.index'));
     }
@@ -112,6 +117,7 @@ class ProdutoController extends AppBaseController
     public function update($id, UpdateProdutoRequest $request)
     {
         $produto = $this->produtoRepository->find($id);
+        $input = $request->all();
 
         if (empty($produto)) {
             Flash::error('Produto not found');
@@ -119,7 +125,11 @@ class ProdutoController extends AppBaseController
             return redirect(route('produtos.index'));
         }
 
-        $produto = $this->produtoRepository->update($request->all(), $id);
+        $nomeArquivo = microtime();
+        $retorno = \Cloudder::upload($request->foto, $nomeArquivo);
+
+        $input['foto'] = $retorno->getResult(){"secure_url"};
+        $produto = $this->produtoRepository->update($input, $id);
 
         Flash::success('Produto updated successfully.');
 
