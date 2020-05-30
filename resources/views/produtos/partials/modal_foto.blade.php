@@ -27,6 +27,7 @@
   var captureButton = document.getElementById('capture');
   var cancelButton = document.getElementById('cancelar');
   var confirmarButton = document.getElementById('confirmar');
+  var abrirModalButton = document.getElementById('btn-modal-foto');
   var videoTracks;
 
   var handleSuccess = function(stream) {
@@ -61,6 +62,13 @@
       videoTracks.forEach(function(track) {track.stop()});
   }
 
-  navigator.mediaDevices.getUserMedia({video: true})
+  abrirModalButton.addEventListener('click', function() {
+      navigator.mediaDevices.getUserMedia({video: true})
       .then(handleSuccess);
+      $(player).show();
+      $(captureButton).show();
+      $(snapshotCanvas).hide();
+      $(confirmarButton).hide();
+  })
+
 </script>

@@ -9,7 +9,7 @@
     </div>
 
     <div class="w-25 pull-right">
-        <a class="btn btn-small btn-primary text-light" data-toggle="modal" data-target="#modalUploadFoto">
+        <a id="btn-modal-foto" class="btn btn-small btn-primary text-light" data-toggle="modal" data-target="#modalUploadFoto">
             <i class="fa fa-camera"></i>
         </a>
     </div>
