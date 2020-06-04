@@ -18,7 +18,7 @@
                                  <a title="Importar Produtos"  href="{{route('importar-produtos')}}"><i class="fa fa-upload fa-lg"></i></a>
                              </div>
                          </div>
-                         <div class="card-body">
+                         <div class="card-body" style="overflow: auto;">
 
                              {{--
                                  FILTRO POR DISPONIBILIDADE
@@ -40,8 +40,9 @@
                                 {!! Form::close() !!}
                              </div>
                              --}}
-
-                             @include('produtos.table')
+                             <div style="overflow:overlay">
+                                 @include('produtos.table')
+                             </div>
                          </div>
                      </div>
                   </div>

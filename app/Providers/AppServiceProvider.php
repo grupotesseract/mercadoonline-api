@@ -34,5 +34,7 @@ class AppServiceProvider extends ServiceProvider
 
             return $faker;
         });
+
+        \App\Models\Produto::observe(new \App\Observers\ProdutoObserver);
     }
 }

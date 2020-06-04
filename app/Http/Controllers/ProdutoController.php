@@ -54,7 +54,7 @@ class ProdutoController extends AppBaseController
     {
         $input = $request->all();
 
-        Flash::success('Produto saved successfully.');
+        Flash::success('Produto salvo com sucesso.');
 
         $nomeArquivo = microtime();
         $retorno = \Cloudder::upload($request->foto, $nomeArquivo);
@@ -78,7 +78,7 @@ class ProdutoController extends AppBaseController
         $produto = $this->produtoRepository->find($id);
 
         if (empty($produto)) {
-            Flash::error('Produto not found');
+            Flash::error('Produto não encontrado');
 
             return redirect(route('produtos.index'));
         }
@@ -98,7 +98,7 @@ class ProdutoController extends AppBaseController
         $produto = $this->produtoRepository->find($id);
 
         if (empty($produto)) {
-            Flash::error('Produto not found');
+            Flash::error('Produto não encontrado');
 
             return redirect(route('produtos.index'));
         }
@@ -120,7 +120,7 @@ class ProdutoController extends AppBaseController
         $input = $request->all();
 
         if (empty($produto)) {
-            Flash::error('Produto not found');
+            Flash::error('Produto não encontrado');
 
             return redirect(route('produtos.index'));
         }
@@ -131,7 +131,7 @@ class ProdutoController extends AppBaseController
         $input['foto'] = $retorno->getResult(){"secure_url"};
         $produto = $this->produtoRepository->update($input, $id);
 
-        Flash::success('Produto updated successfully.');
+        Flash::success('Produto atualizado com sucesso.');
 
         return redirect(route('produtos.index'));
     }
@@ -148,14 +148,14 @@ class ProdutoController extends AppBaseController
         $produto = $this->produtoRepository->find($id);
 
         if (empty($produto)) {
-            Flash::error('Produto not found');
+            Flash::error('Produto não encontrado');
 
             return redirect(route('produtos.index'));
         }
 
         $this->produtoRepository->delete($id);
 
-        Flash::success('Produto deleted successfully.');
+        Flash::success('Produto removido com sucesso.');
 
         return redirect(route('produtos.index'));
     }
@@ -207,7 +207,7 @@ class ProdutoController extends AppBaseController
         $produto = $this->produtoRepository->find($id);
 
         if (empty($produto)) {
-            Flash::error('Produto not found');
+            Flash::error('Produto não encontrado');
             return redirect(route('produtos.index'));
         }
 

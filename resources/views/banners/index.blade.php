@@ -15,11 +15,10 @@
                              Banners
                              <a class="pull-right" href="{{ route('banners.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
-                         <div class="card-body">
-                             @include('banners.table')
-                              <div class="pull-right mr-3">
-                                     
-                              </div>
+                         <div class="card-body" style="overflow:auto">
+                             <div style="overflow:overlay">
+                                 @include('banners.table')
+                             </div>
                          </div>
                      </div>
                   </div>

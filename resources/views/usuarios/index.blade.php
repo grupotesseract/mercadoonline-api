@@ -15,8 +15,10 @@
                         </a>
                     </div>
 
-                    <div class="card-body">
-                        @include('usuarios.table')
+                    <div class="card-body" style="overflow:auto">
+                        <div style="overflow:overlay">
+                            @include('usuarios.table')
+                        </div>
                     </div>
                 </div>
             </div>
