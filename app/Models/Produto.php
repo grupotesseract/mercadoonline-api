@@ -114,12 +114,20 @@ class Produto extends Model
     }
 
     /**
-     * Acessor para
+     * Acessor para o link da foto ou placeholder
      */
      public function getFotoAttribute($value)
      {
         return $value ? $value : "https://via.placeholder.com/180";
      }
 
+
+    /**
+     * Acessor para determinar se o produto tem foto
+     */
+     public function getTemFotoAttribute()
+     {
+        return $this->attributes['foto'] ? true : false;
+     }
 
 }

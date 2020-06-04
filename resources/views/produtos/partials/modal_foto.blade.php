@@ -8,9 +8,12 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
           <video id="player" width=320 height=240 controls autoplay></video>
           <canvas id="snapshot" width=320 height=240 style="display:none;"></canvas>
+          <br>
+          <strong>Câmera:</strong>
+          {{Form::select('camera_devices', [],0, ['id' => 'select-camera'])}}
       </div>
       <div class="modal-footer text-center">
         <button id="cancelar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -21,54 +24,5 @@
     </div>
   </div>
 </div>
-<script>
-  var player = document.getElementById('player');
-  var snapshotCanvas = document.getElementById('snapshot');
-  var captureButton = document.getElementById('capture');
-  var cancelButton = document.getElementById('cancelar');
-  var confirmarButton = document.getElementById('confirmar');
-  var abrirModalButton = document.getElementById('btn-modal-foto');
-  var videoTracks;
 
-  var handleSuccess = function(stream) {
-    // Attach the video stream to the video element and autoplay.
-    player.srcObject = stream;
-    videoTracks = stream.getVideoTracks();
-  };
-
-  captureButton.addEventListener('click', function() {
-    var context = snapshot.getContext('2d');
-    // Draw the video frame to the canvas.
-    context.drawImage(player, 0, 0, snapshotCanvas.width,
-        snapshotCanvas.height);
-    cancelCamera();
-    $(player).hide();
-    $(captureButton).hide();
-    $(snapshotCanvas).show();
-    $(confirmarButton).show();
-  });
-
-  cancelButton.addEventListener('click', function() {
-    cancelCamera();
-  });
-
-  confirmarButton.addEventListener('click', function() {
-      let imagem = snapshotCanvas.toDataURL('image/png');
-      $('#link-foto').val(imagem);
-      cancelButton.click();
-  });
-
-  var cancelCamera = function() {
-      videoTracks.forEach(function(track) {track.stop()});
-  }
-
-  abrirModalButton.addEventListener('click', function() {
-      navigator.mediaDevices.getUserMedia({video: true})
-      .then(handleSuccess);
-      $(player).show();
-      $(captureButton).show();
-      $(snapshotCanvas).hide();
-      $(confirmarButton).hide();
-  })
-
-</script>
+<script src="/js/FotoProduto.js"></script>
