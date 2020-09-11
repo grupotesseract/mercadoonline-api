@@ -20,11 +20,12 @@ Auth::routes(['register' => false]);
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index');
     Route::resource('usuarios', 'UsuarioController');
+    Route::resource('produtos', 'ProdutoController');
 });
 
 Route::get('/estados/{id}/cidades', 'CidadeController@getPorEstado');
 
-Route::resource('produtos', 'ProdutoController');
+
 Route::resource('pedidos', 'PedidoController');
 Route::resource('produtos_pedido', 'ProdutosPedidoController');
 
