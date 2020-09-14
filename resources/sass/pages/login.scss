@@ -9,8 +9,49 @@
 @import '~bootstrap/scss/buttons';
 
 @import '../global/typography';
+@import '../components/forms';
 
 body {
-  background-color: #fff;
-  background-image: linear-gradient(to right bottom, #ffffff, #f6f6f6, #eeeeee, #e5e5e5, #dddddd);
+  position: relative;
+  overflow: hidden;
+  background-image: radial-gradient(ellipse at center, #fff, #eee);
+}
+
+.card {
+  background-color: rgba(#fff, 85%);
+  border-color: var(--gray-100);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.075);
+  color: var(--gray-700);
+  text-shadow: 1px 1px 1px #fff, -1px -1px 1px rgba(#aaa, 0.4);
+  overflow: hidden;
+  border-radius: 0.35rem;
+
+  .text-muted {
+    color: var(--gray-700) !important;
+    font-weight: 300;
+    text-shadow: 1px 1px 1px #fff, -1px -1px 1px rgba(#aaa, 0.5);
+  }
+
+  .form-control {
+    background-color: transparent;
+  }
+
+  .input-group {
+    border-radius: 0.25rem;
+    box-shadow: inset 1px 1px 1px #ccc, inset -1px -1px 1px #eee;
+    background-color: rgba(#000, 8%);
+  }
+
+  .form-control,
+  .input-group-text {
+    border: 0;
+  }
+
+  .input-group-text {
+    background-color: transparent;
+  }
+
+  .input-group-prepend {
+    margin-right: 0;
+  }
 }

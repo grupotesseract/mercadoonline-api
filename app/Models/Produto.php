@@ -35,10 +35,7 @@ class Produto extends Model
 
     public $table = 'produtos';
 
-
     protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'titulo',
@@ -116,18 +113,16 @@ class Produto extends Model
     /**
      * Acessor para o link da foto ou placeholder
      */
-     public function getFotoAttribute($value)
-     {
-        return $value ? $value : "https://via.placeholder.com/180";
-     }
-
+    public function getFotoAttribute($value)
+    {
+        return $value ?? 'https://lorempixel.com/120/120/food/' . rand(1, 10);
+    }
 
     /**
      * Acessor para determinar se o produto tem foto
      */
-     public function getTemFotoAttribute()
-     {
+    public function getTemFotoAttribute()
+    {
         return $this->attributes['foto'] ? true : false;
-     }
-
+    }
 }

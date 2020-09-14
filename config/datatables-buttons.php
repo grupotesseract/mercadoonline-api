@@ -58,13 +58,11 @@ return [
      */
     'parameters' => [
         'dom'     => 'Bfrtip',
-        'order'   => [[0, 'desc']],
+        'order'   => [[1, 'desc']],
         'buttons' => [
             'create',
             'export',
             'print',
-            'reset',
-            'reload',
         ],
     ],
 ];

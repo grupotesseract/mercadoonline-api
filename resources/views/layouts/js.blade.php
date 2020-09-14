@@ -3,11 +3,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/pt-br.js" integrity="sha256-aIToY7VLU5x+toAJcyINV0WEogFBCIVeeWhyUbCaYiQ=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/5948ade80b.js" crossorigin="anonymous"></script>
 
-<script src="/js/App.js"></script>
+<script src="/js/App.js?v={{ filemtime('./js/App.js') }}"></script>
 
 @yield('scripts')
 
 @if (env('APP_ENV') === 'local')
-    <script async src="http://localhost:3000/browser-sync/browser-sync-client.js?v=2.26.7"></script>
+  <script async src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
 @endif

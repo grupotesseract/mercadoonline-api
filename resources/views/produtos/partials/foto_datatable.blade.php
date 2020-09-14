@@ -1,1 +1,4 @@
-<img src='{{$foto}}' width="180px" alt='Foto do produto'>
+<img src="{{ $foto }}"
+  class="img-thumbnail"
+  width="60px"
+  alt="Foto do produto" />

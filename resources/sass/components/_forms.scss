@@ -3,3 +3,9 @@ label {
   color: $gray-500;
   font-size: 12px;
 }
+
+.form-control {
+  &:focus {
+    box-shadow: none;
+  }
+}

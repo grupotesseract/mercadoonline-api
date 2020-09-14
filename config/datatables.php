@@ -113,4 +113,14 @@ return [
         'options' => 0,
     ],
 
+    /*
+     * Default actions column.
+     */
+    'actions' => [
+        'title' => 'Gérsno',
+        'width' => '300px',
+        'class' => 'table-actions',
+        'printable' => false,
+    ],
+
 ];

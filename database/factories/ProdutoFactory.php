@@ -17,7 +17,7 @@ $factory->define(Produto::class, function (Faker $faker) {
         'descricao_sem_acento' => $faker->text,
         'marca' => $faker->word,
         'ncm' => $faker->randomNumber(7),
-        'foto' => 'https://via.placeholder.com/180',
+        'foto' => 'https://lorempixel.com/120/120/food/' . rand(1, 10),
         'st' => $faker->word,
         'cfop' => $faker->randomNumber(3),
         'icms_trib' => $faker->word,

@@ -1,0 +1,28 @@
+.switch {
+  height: 22px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.switch-slider::before {
+  top: 0;
+}
+
+.switch-success .switch-input:checked + .switch-slider {
+  background-color: lighten($primary, 15%);
+  border-color: var(--primary);
+
+  &:before {
+    border-color: var(--primary);
+  }
+}
+
+.switch-input:checked ~ .switch-slider::before {
+  transition: transform ease 0.25s;
+}
+
+.switch-input:not(:checked) + .switch-slider {
+  background-color: lighten($gray-100, 5%);
+}

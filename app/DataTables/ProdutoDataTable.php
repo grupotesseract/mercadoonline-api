@@ -20,8 +20,11 @@ class ProdutoDataTable extends DataTable
 
         return $dataTable
             ->addColumn('foto', 'produtos.partials.foto_datatable')
+            ->addColumn('preco', 'components.price')
             ->addColumn('action', 'produtos.datatables_actions')
-            ->rawColumns(['foto', 'action']);
+            ->addColumn('disponivel', 'produtos.partials.disponivel')
+            ->blacklist(['foto'])
+            ->rawColumns(['foto', 'preco', 'action', 'disponivel']);
     }
 
     /**
@@ -45,21 +48,8 @@ class ProdutoDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
-            ->parameters([
-                    'dom'       => 'Bfrtip',
-                    'stateSave' => true,
-                    'order'     => [[0, 'asc']],
-                    'buttons'   => [
-                        ['extend' => 'create', 'text' => '<i class="fa fa-plus"></i> Adicionar', 'className' => 'btn btn-sm'],
-                        ['extend' => 'export', 'text' => '<i class="fa fa-download"></i> Exportar', 'className' => 'btn btn-sm'],
-                        ['extend' => 'print', 'text' => '<i class="fa fa-print"></i>', 'className' => 'btn btn-sm'],
-                        ['extend' => 'reload', 'text' => '<i class="fa fa-refresh"></i>', 'className' => 'btn btn-sm'],
-                    ],
-                    'language' => [
-                        'url' => url('https://cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json'),
-                    ],
-                ]);
+            ->addAction(config('datatables.actions'))
+            ->parameters($this->getBuilderParameters());
     }
 
     /**
@@ -70,13 +60,10 @@ class ProdutoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'foto',
+            'foto' => ['filterable' => false, 'searchable' => false, 'orderable' => false],
             'titulo',
-            'marca',
-            'preco',
+            'preco' => ['title' => 'Preço'],
             'disponivel',
-            'ean',
-            'subtitulo',
         ];
     }
 

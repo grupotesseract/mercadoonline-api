@@ -13,9 +13,9 @@
         </style>
     </head>
     <body>
-        <table class="table table-bordered table-condensed table-striped">
+        <table class="table table-condensed">
             @foreach($data as $row)
-                @if ($row == reset($data)) 
+                @if ($row == reset($data))
                     <tr>
                         @foreach($row as $key => $value)
                             <th>{!! $key !!}</th>
